@@ -60,4 +60,34 @@ Este comando deverá ser executado nas máquinas do nosso cluster, não havendo 
 
 - **worker:** com essa função, quaisquer cargas de trabalho ou pods implantados chegarão a esses nós.
 
-Após a execução do comando em todas as maquinas desejadas, nosso cluster está praticamente finalizado, necessitando apenas de configurações adicionais de como o mesmo deverá funcionar para as nossas aplicações.
+Após a execução do comando em todas as maquinas desejadas, nosso cluster está praticamente finalizado, necessitando apenas da instalação do Kubernetes nas máquinas e de configurações adicionais de como o mesmo deverá funcionar para as nossas aplicações.
+
+## Instalação do Kubernetes
+
+[Kubernetes](https://kubernetes.io/pt-br/docs/home/) é um plataforma de código aberto, portável e extensiva para o gerenciamento de cargas de trabalho e serviços distribuídos em contêineres, que facilita tanto a configuração declarativa quanto a automação. Ele possui um ecossistema grande, e de rápido crescimento. Serviços, suporte, e ferramentas para Kubernetes estão amplamente disponíveis.
+
+Para instalar o kubectl que é a CLI do Kubernetes, que através dele iremos interagir com o cluster, iremos necessitar acessar a máquina em que o rancher está instalada e executar:
+
+```sh
+sudo apt-get update && sudo apt-get install -y apt-transport-https gnupg2
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+sudo apt-get update
+sudo apt-get install -y kubectl
+```
+
+Com o kubectl instalado, iremos capturar as credenciais de acesso no Rancher e configurar o kubectl.
+
+Na interface do Rancher, vamos capturar o KubeConfig no menu superior e executar na mesma máquina:
+
+```sh
+mkdir ~/.kube
+vi ~/.kube/config
+```
+E colar o código neste arquivo.
+
+Após isto podemos executar o comando abaixo e verificar os nossos nós em funcionamento:
+
+```sh
+kubectl get nodes
+```
