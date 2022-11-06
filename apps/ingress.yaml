@@ -1,0 +1,38 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-ingress
+spec:
+  rules:
+    - host: httpd.mathec.com.br
+      http:
+        paths:
+          - backend:
+              service:
+                name: httpd-service
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix
+
+    - host: nginx.mathec.com.br
+      http:
+        paths:
+          - backend:
+              service:
+                name: nginx-service
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix
+
+    - host: wordpress.mathec.com.br
+      http:
+        paths:
+          - backend:
+              service:
+                name: wordpress
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix
