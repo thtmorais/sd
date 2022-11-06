@@ -36,3 +36,14 @@ spec:
                   number: 80
             path: /
             pathType: Prefix
+
+    - host: php-apache.mathec.com.br
+      http:
+        paths:
+          - backend:
+              service:
+                name: php-apache
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix

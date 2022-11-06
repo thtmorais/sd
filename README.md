@@ -99,3 +99,17 @@ Com o Rancher, para a persistência de dados, iremos utilizar o [Longhorn](https
 A instalação do Longhorn pode ser feito através da interface gŕafica, que irá fazer todo o deployment de forma automática.
 
 Como o Longhorn replica todas as alterações em todas as máquinas, isto possui um custo de CPU e RAM.
+
+## Executando nossas aplicações
+
+Com tudo isso configurado, podemos fazer a instalação (deployment) de nossas aplicações.
+
+Para este exemplo iremos instalar 3 aplicativos: wordpress, httpd, php-apache e nginx.
+
+Para isso iremos somente executar o seguinte comando:
+
+```shell
+kubectl apply -f ./apps
+```
+
+Com isso podemos verificar que foram criadas as intâncias em diversas máquinas.
