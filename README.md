@@ -113,3 +113,13 @@ kubectl apply -f ./apps
 ```
 
 Com isso podemos verificar que foram criadas as intâncias em diversas máquinas.
+
+Uma grande diferença implementada, é que apenas o PHP-Apache foi implementada com auto-escalonamento. Vamos estressar estas máquinas agora?
+
+```sh
+kubectl run -i --tty load-generator --image=busybox /bin/sh
+
+while true; do wget -q -O- http://php-apache.mathec.com.br; done
+```
+
+Com isso iremos poder ver outros pods sendo criados para esta aplicação.
