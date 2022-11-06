@@ -91,3 +91,11 @@ Após isto podemos executar o comando abaixo e verificar os nossos nós em funci
 ```sh
 kubectl get nodes
 ```
+
+## Persistência dos dados
+
+Com o Rancher, para a persistência de dados, iremos utilizar o [Longhorn](https://longhorn.io/).
+
+A instalação do Longhorn pode ser feito através da interface gŕafica, que irá fazer todo o deployment de forma automática.
+
+Como o Longhorn replica todas as alterações em todas as máquinas, isto possui um custo de CPU e RAM.
