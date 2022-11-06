@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: php-apache
-          image: php-apache:latest
+          image: thtmorais/php-apache:latest
           ports:
             - containerPort: 80
           resources:
